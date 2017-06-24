@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <autocomplete suggestions="suggestions" v-model="selection"></autocomplete>
+  <div id="app" class="container">
+    <autocomplete :suggestions="suggestions" v-model="selection"></autocomplete>
   </div>
 </template>
 
@@ -12,7 +12,7 @@ export default {
   components: {
     Autocomplete
   },
-  data() {
+  data () {
     return {
       selection: '',
       suggestions: ['Chennai', 'Bangalore']

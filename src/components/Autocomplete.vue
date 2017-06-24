@@ -26,7 +26,7 @@ export default {
 
   },
 
-  data() {
+  data () {
     return {
       open: false,
       current: 0
@@ -34,20 +34,20 @@ export default {
   },
 
   computed: {
-    //Filtering the suggestion based on the input
-    matches() {
+    // Filtering the suggestion based on the input
+    matches () {
       return this.suggestions.filter((str) => {
         return str.indexOf(this.selection) >= 0
-      });
+      })
     },
 
-    openSuggestion() {
+    openSuggestion () {
 
     }
   },
 
   methods: {
-    updateValue(value) {
+    updateValue (value) {
       this.$emit('input', value)
     }
   }
