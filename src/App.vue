@@ -15,7 +15,13 @@ export default {
   data () {
     return {
       selection: '',
-      suggestions: ['Chennai', 'Bangalore']
+      suggestions: [
+        { city: 'Bangalore', state: 'Karnataka' },
+        { city: 'Chennai', state: 'Tamil Nadu' },
+        { city: 'Delhi', state: 'Delhi' },
+        { city: 'Kolkata', state: 'West Bengal' },
+        { city: 'Mumbai', state: 'Maharashtra' }
+      ]
     }
   }
 }
