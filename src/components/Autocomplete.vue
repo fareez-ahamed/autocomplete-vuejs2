@@ -1,7 +1,7 @@
 <template>
     <div style="position:relative" v-bind:class="{'open':openSuggestion}">
         <input class="form-control" type="text" :value="value" @input="updateValue($event.target.value)"
-          @keydown.enter = 'enter'
+          @keydown.enter.prevent = 'enter'
           @keydown.down = 'down'
           @keydown.up = 'up'
         >
