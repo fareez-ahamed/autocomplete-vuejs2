@@ -45,7 +45,9 @@ export default {
     // Filtering the suggestion based on the input
     matches () {
       return this.suggestions.filter((obj) => {
-        return obj.city.indexOf(this.value) >= 0
+        let city = obj.city.toUpperCase();
+        let val = this.value.toUpperCase();
+        return city.indexOf(val) >= 0
       })
     },
 
