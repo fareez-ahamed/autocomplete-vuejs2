@@ -6,7 +6,7 @@
           @keydown.up = 'up'
         >
         <ul class="dropdown-menu" style="width:100%">
-            <li v-for="(suggestion, index) in matches"
+            <li v-for="(suggestion, index) in matches" :key="(suggestion, index).id"
                 v-bind:class="{'active': isActive(index)}"
                 @click="suggestionClick(index)"
             >
