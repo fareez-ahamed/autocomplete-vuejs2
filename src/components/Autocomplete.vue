@@ -1,6 +1,7 @@
 <template>
-    <div style="position:relative" v-bind:class="{'open':openSuggestion}">
-        <input class="form-control" type="text" :value="value" @input="updateValue($event.target.value)"
+    <div style="position:relative" v-bind:class="{ 'open': openSuggestion }">
+        <input class="form-control" type="text" :value="value" :placeholder="placeholder"
+          @input="updateValue($event.target.value)"
           @focus="show"
           @keydown.enter = 'enter'
           @keydown.down = 'down'
@@ -37,7 +38,9 @@ export default {
       required: true
     },
 
-    limit: Number
+    limit: Number,
+
+    placeholder: String
 
   },
 
