@@ -1,3 +1,3 @@
-import Autocomplete from './components/autocomplete'
+import Autocomplete from './components/Autocomplete'
 
 export default Autocomplete
