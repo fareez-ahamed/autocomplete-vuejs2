@@ -1,6 +1,6 @@
-# autocomplete-vuejs2
+# v-complete
 
-> Autocomplete component using Vue.js 2
+> Autocomplete component using Vue 2 and Bootstrap
 
 ## Build Setup
 

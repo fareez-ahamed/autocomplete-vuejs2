@@ -4,13 +4,14 @@
           @keydown.enter = 'enter'
           @keydown.down = 'down'
           @keydown.up = 'up'
+          @keydown.esc = 'close'
         >
         <ul class="dropdown-menu" style="width:100%">
             <li v-for="(suggestion, index) in matches" :key="index"
                 v-bind:class="{'active': isActive(index)}"
                 @click="suggestionClick(index)"
             >
-              <a href="#">{{ suggestion.city }} <small>{{ suggestion.state }}</small>
+              <a href="#">{{ suggestion.name }} <small>{{ suggestion.description }}</small>
               </a>
             </li>
         </ul>
@@ -18,6 +19,8 @@
 </template>
 
 <script>
+import compareStrings from 'string-compare'
+
 export default {
 
   props: {
@@ -30,7 +33,9 @@ export default {
     suggestions: {
       type: Array,
       required: true
-    }
+    },
+
+    limit: Number
 
   },
 
@@ -44,9 +49,7 @@ export default {
   computed: {
     // Filtering the suggestion based on the input
     matches () {
-      return this.suggestions.filter((obj) => {
-        return obj.city.indexOf(this.value) >= 0
-      })
+      return this.suggestions.sort((a, b) => compareStrings(a.name, this.value) < compareStrings(b.name, this.value) ? 1 : -1).slice(0, this.limit || 5)
     },
 
     openSuggestion () {
@@ -68,7 +71,11 @@ export default {
 
     // When enter pressed on the input
     enter () {
-      this.$emit('input', this.matches[this.current].city)
+      this.$emit('input', this.matches[this.current].name)
+      this.open = false
+    },
+
+    close () {
       this.open = false
     },
 
@@ -93,7 +100,7 @@ export default {
 
     // When one of the suggestion is clicked
     suggestionClick (index) {
-      this.$emit('input', this.matches[index].city)
+      this.$emit('input', this.matches[index].name)
       this.open = false
     }
 

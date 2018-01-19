@@ -6,8 +6,8 @@ import App from './App'
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-new Vue({
+window.App = new Vue({
   el: '#app',
-  template: '<App/>',
+  template: '<App ref="mainComponent"/>',
   components: { App }
 })
