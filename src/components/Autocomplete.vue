@@ -12,7 +12,8 @@
                 v-bind:class="{'active': isActive(index)}"
                 @click="suggestionClick(index)"
             >
-              <a href="#">{{ suggestion.name }} <small v-if="suggestion.description">{{ suggestion.description }}</small>
+              <a>
+                {{ suggestion.name }} <small v-if="suggestion.description">{{ suggestion.description }}</small>
               </a>
             </li>
         </ul>
