@@ -1,6 +1,6 @@
 <template>
-    <div style="position:relative" v-bind:class="{ 'open': openSuggestion }">
-        <input class="form-control" type="text" :value="value" :placeholder="placeholder"
+    <div style="position:relative" class="v-complete" :class="{ 'open': openSuggestion }">
+        <input class="form-control" type="text" :value="value" :placeholder="placeholder" :required="required"
           @input="updateValue($event.target.value)"
           @focus="show"
           @keydown.enter = 'enter'
@@ -8,7 +8,7 @@
           @keydown.up = 'up'
           @keydown.esc = 'close'
         >
-        <ul class="dropdown-menu" style="width:100%">
+        <ul class="dropdown-menu full-width">
             <li v-for="(suggestion, index) in matches" :key="index"
                 v-bind:class="{'active': isActive(index)}"
                 @click="suggestionClick(index)"
@@ -40,7 +40,9 @@ export default {
 
     limit: Number,
 
-    placeholder: String
+    placeholder: String,
+
+    required: Boolean
 
   },
 
