@@ -1,6 +1,7 @@
 <template>
     <div style="position:relative" v-bind:class="{'open':openSuggestion}">
         <input class="form-control" type="text" :value="value" @input="updateValue($event.target.value)"
+          @focus="show"
           @keydown.enter = 'enter'
           @keydown.down = 'down'
           @keydown.up = 'up'
@@ -11,7 +12,7 @@
                 v-bind:class="{'active': isActive(index)}"
                 @click="suggestionClick(index)"
             >
-              <a href="#">{{ suggestion.name }} <small>{{ suggestion.description }}</small>
+              <a href="#">{{ suggestion.name }} <small v-if="suggestion.description">{{ suggestion.description }}</small>
               </a>
             </li>
         </ul>
@@ -77,6 +78,10 @@ export default {
 
     close () {
       this.open = false
+    },
+
+    show () {
+      this.open = true
     },
 
     // When up pressed while suggestions are open
