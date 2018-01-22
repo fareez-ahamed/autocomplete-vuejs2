@@ -7,6 +7,7 @@
           @keydown.down = 'down'
           @keydown.up = 'up'
           @keydown.esc = 'close'
+          @keydown.tab = 'close'
         >
         <ul class="dropdown-menu full-width">
             <li v-for="(suggestion, index) in matches" :key="index"
@@ -40,6 +41,11 @@ export default {
 
     limit: Number,
 
+    threshold: {
+      type: Number,
+      default: 0
+    },
+
     placeholder: String,
 
     required: Boolean
@@ -56,7 +62,10 @@ export default {
   computed: {
     // Filtering the suggestion based on the input
     matches () {
-      return this.suggestions.sort((a, b) => compareStrings(a.name, this.value) < compareStrings(b.name, this.value) ? 1 : -1).slice(0, this.limit || 5)
+      return this.suggestions
+              .map(s => (Object.assign({}, s, { $matchScore: compareStrings(s.name, this.value) })))
+              .filter(s => s.$matchScore > this.threshold)
+              .sort((a, b) => a.$matchScore < b.$matchScore ? 1 : -1).slice(0, this.limit || 5)
     },
 
     openSuggestion () {
