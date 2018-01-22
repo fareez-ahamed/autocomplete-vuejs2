@@ -7,7 +7,7 @@
           @keydown.down = 'down'
           @keydown.up = 'up'
           @keydown.esc = 'close'
-          @keydown.tab = 'close'
+          @blur = 'close'
         >
         <ul class="dropdown-menu full-width">
             <li v-for="(suggestion, index) in matches" :key="index"
