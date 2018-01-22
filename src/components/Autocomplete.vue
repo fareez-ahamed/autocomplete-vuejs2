@@ -87,7 +87,7 @@ export default {
 
     // When enter pressed on the input
     enter () {
-      this.$emit('input', this.matches[this.current].name)
+      if (this.matches[this.current]) this.$emit('input', this.matches[this.current].name)
       this.open = false
     },
 

@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="container">
-    <autocomplete ref="autocompleteComponent" :suggestions="suggestions" v-model="selection"></autocomplete>
+    <autocomplete ref="autocompleteComponent" :suggestions="suggestions" v-model="selection" :threshold="0.3"></autocomplete>
   </div>
 </template>
 
