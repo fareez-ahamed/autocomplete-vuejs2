@@ -39,8 +39,14 @@ export default {
       required: true
     },
 
+    /**
+     * limits the number of autocomplete values shown at a time
+     */
     limit: Number,
 
+    /**
+     * between 0 and 1, filters the autocomplete values based on how well they match the input value
+     */
     threshold: {
       type: Number,
       default: 0
