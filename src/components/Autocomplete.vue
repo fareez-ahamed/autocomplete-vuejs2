@@ -63,7 +63,7 @@ export default {
     // Filtering the suggestion based on the input
     matches () {
       return this.suggestions
-              .map(s => (Object.assign({}, s, { $matchScore: compareStrings(s.name, this.value) })))
+              .map(s => (Object.assign({}, s, { $matchScore: this.value ? compareStrings(s.name, this.value) : 1 })))
               .filter(s => s.$matchScore > this.threshold)
               .sort((a, b) => a.$matchScore < b.$matchScore ? 1 : -1).slice(0, this.limit || 5)
     },
@@ -108,6 +108,7 @@ export default {
 
     // When up pressed while suggestions are open
     down () {
+      this.open = true
       if (this.current < this.matches.length - 1) {
         this.current++
       }
