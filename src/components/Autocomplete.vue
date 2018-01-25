@@ -98,7 +98,9 @@ export default {
     },
 
     close () {
-      this.open = false
+      setTimeout(() => {
+        this.open = false
+      }, 200)
     },
 
     show () {
@@ -127,7 +129,7 @@ export default {
 
     // When one of the suggestion is clicked
     suggestionClick (index) {
-      this.$emit('input', this.matches[index].name)
+      if (this.matches[this.current]) this.$emit('input', this.matches[index].name)
       this.open = false
     }
 
