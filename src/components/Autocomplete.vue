@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import compareStrings from 'string-compare'
+import 'string-compare'
 
 export default {
 
@@ -69,7 +69,7 @@ export default {
     // Filtering the suggestion based on the input
     matches () {
       return this.suggestions
-              .map(s => (Object.assign({}, s, { $matchScore: this.value ? compareStrings(s.name, this.value) : 1 })))
+              .map(s => (Object.assign({}, s, { $matchScore: this.value ? String.compare(s.name, this.value) : 1 })))
               .filter(s => s.$matchScore > this.threshold)
               .sort((a, b) => a.$matchScore < b.$matchScore ? 1 : -1).slice(0, this.limit || 5)
     },
