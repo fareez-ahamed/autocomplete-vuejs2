@@ -54,7 +54,9 @@ export default {
 
     placeholder: String,
 
-    required: Boolean
+    required: Boolean,
+
+    caseSensitive: Boolean
 
   },
 
@@ -69,7 +71,7 @@ export default {
     // Filtering the suggestion based on the input
     matches () {
       return this.suggestions
-              .map(s => (Object.assign({}, s, { $matchScore: this.value ? String.compare(s.name, this.value) : 1 })))
+              .map(s => (Object.assign({}, s, { $matchScore: this.value ? String.compare(this.resolveCase(s.name), this.resolveCase(this.value)) : 1 })))
               .filter(s => s.$matchScore > this.threshold)
               .sort((a, b) => a.$matchScore < b.$matchScore ? 1 : -1).slice(0, this.limit || 5)
     },
@@ -89,6 +91,13 @@ export default {
         this.current = 0
       }
       this.$emit('input', value)
+    },
+
+    resolveCase (text) {
+      if (!this.caseSensitive) {
+        return (text || '').toLowerCase()
+      }
+      return text
     },
 
     // When enter pressed on the input

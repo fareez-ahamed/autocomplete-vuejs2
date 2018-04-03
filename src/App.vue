@@ -20,7 +20,8 @@ export default {
         { name: 'Chennai', description: 'Tamil Nadu' },
         { name: 'Delhi', description: 'Delhi' },
         { name: 'Kolkata', description: 'West Bengal' },
-        { name: 'Mumbai', description: 'Maharashtra' }
+        { name: 'Mumbai', description: 'Maharashtra' },
+        { name: 'LAGOS', description: 'Lagos' }
       ]
     }
   }
