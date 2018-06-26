@@ -1,6 +1,6 @@
 {
-  "name": "autocomplete-v2",
-  "version": "1.0.0",
+  "name": "v-complete",
+  "version": "1.0.10",
   "description": "A Vue.js project",
   "author": "Fareez Ahamed <fareez.ahamed@gmail.com>",
   "private": true,
@@ -10,7 +10,9 @@
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src"
   },
+  "main": "./src/index.js",
   "dependencies": {
+    "string-compare": "^1.0.1",
     "vue": "^2.3.3"
   },
   "devDependencies": {

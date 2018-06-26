@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="container">
-    <autocomplete :suggestions="suggestions" v-model="selection"></autocomplete>
+    <autocomplete ref="autocompleteComponent" :suggestions="suggestions" v-model="selection" :threshold="0.3"></autocomplete>
   </div>
 </template>
 
@@ -16,11 +16,12 @@ export default {
     return {
       selection: '',
       suggestions: [
-        { city: 'Bangalore', state: 'Karnataka' },
-        { city: 'Chennai', state: 'Tamil Nadu' },
-        { city: 'Delhi', state: 'Delhi' },
-        { city: 'Kolkata', state: 'West Bengal' },
-        { city: 'Mumbai', state: 'Maharashtra' }
+        { name: 'Bangalore', description: 'Karnataka' },
+        { name: 'Chennai', description: 'Tamil Nadu' },
+        { name: 'Delhi', description: 'Delhi' },
+        { name: 'Kolkata', description: 'West Bengal' },
+        { name: 'Mumbai', description: 'Maharashtra' },
+        { name: 'LAGOS', description: 'Lagos' }
       ]
     }
   }
